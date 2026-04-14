@@ -1,0 +1,44 @@
+{
+  "info": {
+    "name": "URL Shortener",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Shorten URL",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"URL\": \"https://www.google.com\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/url-shortener/shorten",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "url-shortener", "shorten"]
+        }
+      }
+    },
+    {
+      "name": "Redirect to Long URL",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/url-shortener/{{shortId}}",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "url-shortener", "{{shortId}}"]
+        }
+      }
+    }
+  ]
+}
