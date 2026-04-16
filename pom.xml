@@ -11,5 +11,6 @@
 
 	<modules>
 		<module>url-shortener</module>
+		<module>rate-limiter</module>
 	</modules>
 </project>
