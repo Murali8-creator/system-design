@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="2150" viewBox="0 0 900 2150" font-family="Arial, sans-serif" style="background:#fff">
+  <style>
+    .title { font-size: 28px; font-weight: bold; fill: #1e1e1e; }
+    .subtitle { font-size: 14px; fill: #757575; }
+    .section { font-size: 20px; font-weight: bold; fill: #1e1e1e; }
+    .lbl { font-size: 14px; fill: #1e1e1e; }
+    .lblBold { font-size: 16px; font-weight: bold; fill: #1e1e1e; }
+    .zoneLbl { font-size: 16px; font-weight: bold; }
+  </style>
+
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" class="title">Dependency Injection</text>
+  <text x="450" y="62" text-anchor="middle" class="subtitle">Class receives dependencies, does not create them</text>
+
+  <!-- ===== SECTION 1: Without DI vs With DI ===== -->
+  <text x="60" y="110" class="section">1. Without DI vs With DI</text>
+
+  <!-- Without DI zone -->
+  <rect x="60" y="130" width="360" height="240" rx="8" fill="#ffc9c9" opacity="0.3" stroke="#ef4444"/>
+  <text x="80" y="155" class="zoneLbl" fill="#b91c1c">Without DI (bad)</text>
+  <rect x="90" y="175" width="300" height="175" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="2"/>
+  <text x="240" y="205" text-anchor="middle" class="lblBold">Service</text>
+  <text x="240" y="235" text-anchor="middle" class="lbl" font-family="monospace">repo = new Repo();</text>
+  <text x="110" y="275" class="lbl">* Tightly coupled to Repo</text>
+  <text x="110" y="298" class="lbl">* Can't test in isolation</text>
+  <text x="110" y="321" class="lbl">* Can't swap implementations</text>
+
+  <!-- With DI zone -->
+  <rect x="460" y="130" width="380" height="240" rx="8" fill="#b2f2bb" opacity="0.3" stroke="#22c55e"/>
+  <text x="480" y="155" class="zoneLbl" fill="#15803d">With DI (good)</text>
+
+  <rect x="480" y="175" width="140" height="60" rx="8" fill="#d0bfff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="550" y="200" text-anchor="middle" class="lblBold">Spring</text>
+  <text x="550" y="220" text-anchor="middle" class="lblBold">Container</text>
+
+  <rect x="480" y="250" width="140" height="40" rx="8" fill="#c3fae8" stroke="#06b6d4" stroke-width="2"/>
+  <text x="550" y="275" text-anchor="middle" class="lbl">Repo Bean</text>
+
+  <rect x="680" y="210" width="140" height="120" rx="8" fill="#ffffff" stroke="#22c55e" stroke-width="2"/>
+  <text x="750" y="240" text-anchor="middle" class="lblBold">Service</text>
+  <text x="750" y="265" text-anchor="middle" class="lbl" font-family="monospace">constructor(</text>
+  <text x="750" y="285" text-anchor="middle" class="lbl" font-family="monospace">  Repo repo</text>
+  <text x="750" y="305" text-anchor="middle" class="lbl" font-family="monospace">)</text>
+
+  <!-- Inject arrow -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8b5cf6"/>
+    </marker>
+    <marker id="arrowBlk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1e1e1e"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#ef4444"/>
+    </marker>
+  </defs>
+  <line x1="620" y1="270" x2="680" y2="270" stroke="#8b5cf6" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="650" y="260" text-anchor="middle" class="lbl" fill="#8b5cf6">injects</text>
+
+  <!-- ===== SECTION 2: Spring Startup Flow ===== -->
+  <text x="60" y="430" class="section">2. Spring Startup Flow</text>
+
+  <rect x="40" y="460" width="155" height="80" rx="8" fill="#a5d8ff" stroke="#4a9eed" stroke-width="2"/>
+  <text x="117" y="490" text-anchor="middle" class="lbl" font-weight="bold">1. Component Scan</text>
+  <text x="117" y="510" text-anchor="middle" class="lbl">@Service,</text>
+  <text x="117" y="528" text-anchor="middle" class="lbl">@Component, etc.</text>
+
+  <line x1="195" y1="500" x2="220" y2="500" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrowBlk)"/>
+
+  <rect x="225" y="460" width="155" height="80" rx="8" fill="#fff3bf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="302" y="490" text-anchor="middle" class="lbl" font-weight="bold">2. Bean Definitions</text>
+  <text x="302" y="510" text-anchor="middle" class="lbl">(recipes before</text>
+  <text x="302" y="528" text-anchor="middle" class="lbl">creation)</text>
+
+  <line x1="380" y1="500" x2="405" y2="500" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrowBlk)"/>
+
+  <rect x="410" y="460" width="155" height="80" rx="8" fill="#d0bfff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="487" y="490" text-anchor="middle" class="lbl" font-weight="bold">3. Dependency Graph</text>
+  <text x="487" y="510" text-anchor="middle" class="lbl">(order: A before B</text>
+  <text x="487" y="528" text-anchor="middle" class="lbl">if B needs A)</text>
+
+  <line x1="565" y1="500" x2="590" y2="500" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrowBlk)"/>
+
+  <rect x="595" y="460" width="155" height="80" rx="8" fill="#ffd8a8" stroke="#f59e0b" stroke-width="2"/>
+  <text x="672" y="490" text-anchor="middle" class="lbl" font-weight="bold">4. Reflection</text>
+  <text x="672" y="510" text-anchor="middle" class="lbl">calls constructors</text>
+  <text x="672" y="528" text-anchor="middle" class="lbl">with right args</text>
+
+  <line x1="400" y1="570" x2="400" y2="600" stroke="#1e1e1e" stroke-width="2" marker-end="url(#arrowBlk)"/>
+
+  <rect x="280" y="605" width="240" height="60" rx="8" fill="#b2f2bb" stroke="#22c55e" stroke-width="2"/>
+  <text x="400" y="632" text-anchor="middle" class="lblBold">5. ApplicationContext</text>
+  <text x="400" y="652" text-anchor="middle" class="lbl">beans ready for injection</text>
+
+  <!-- ===== SECTION 3: Injection Types ===== -->
+  <text x="60" y="740" class="section">3. Injection Types</text>
+
+  <rect x="40" y="770" width="265" height="160" rx="8" fill="#b2f2bb" stroke="#22c55e" stroke-width="2"/>
+  <text x="172" y="795" text-anchor="middle" class="lblBold">Constructor (PREFERRED)</text>
+  <text x="60" y="820" class="lbl">* final fields → thread-safe</text>
+  <text x="60" y="842" class="lbl">* impossible to skip deps → no NPE</text>
+  <text x="60" y="864" class="lbl">* easy to test: new Foo(mockBar)</text>
+  <text x="60" y="886" class="lbl">* fails fast on circular deps</text>
+  <text x="60" y="910" class="lbl" font-family="monospace" font-size="12">public Foo(Bar bar) { ... }</text>
+
+  <rect x="315" y="770" width="265" height="160" rx="8" fill="#ffc9c9" stroke="#ef4444" stroke-width="2"/>
+  <text x="447" y="795" text-anchor="middle" class="lblBold">Field (AVOID)</text>
+  <text x="335" y="820" class="lbl">* hidden dependencies</text>
+  <text x="335" y="842" class="lbl">* field can't be final</text>
+  <text x="335" y="864" class="lbl">* hard to test without Spring</text>
+  <text x="335" y="886" class="lbl">* hides circular deps silently</text>
+  <text x="335" y="910" class="lbl" font-family="monospace" font-size="12">@Autowired Bar bar;</text>
+
+  <rect x="590" y="770" width="265" height="160" rx="8" fill="#fff3bf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="722" y="795" text-anchor="middle" class="lblBold">Setter (RARE)</text>
+  <text x="610" y="820" class="lbl">* optional dependency</text>
+  <text x="610" y="842" class="lbl">* changes after init</text>
+  <text x="610" y="864" class="lbl">* rarely needed</text>
+  <text x="610" y="910" class="lbl" font-family="monospace" font-size="12">@Autowired setBar(Bar) {}</text>
+
+  <!-- ===== SECTION 4: Ambiguity ===== -->
+  <text x="60" y="1000" class="section">4. Ambiguity: @Primary vs @Qualifier</text>
+
+  <rect x="340" y="1030" width="220" height="50" rx="8" fill="#d0bfff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="450" y="1060" text-anchor="middle" class="lblBold">EmailSender (interface)</text>
+
+  <line x1="410" y1="1080" x2="300" y2="1115" stroke="#8b5cf6" stroke-width="2"/>
+  <line x1="490" y1="1080" x2="600" y2="1115" stroke="#8b5cf6" stroke-width="2"/>
+
+  <rect x="180" y="1120" width="240" height="65" rx="8" fill="#a5d8ff" stroke="#4a9eed" stroke-width="2"/>
+  <text x="300" y="1147" text-anchor="middle" class="lblBold">SmtpEmailSender</text>
+  <text x="300" y="1170" text-anchor="middle" class="lbl" fill="#2563eb">@Primary (default pick)</text>
+
+  <rect x="480" y="1120" width="240" height="65" rx="8" fill="#a5d8ff" stroke="#4a9eed" stroke-width="2"/>
+  <text x="600" y="1147" text-anchor="middle" class="lblBold">SesEmailSender</text>
+  <text x="600" y="1170" text-anchor="middle" class="lbl">(no @Primary)</text>
+
+  <rect x="310" y="1220" width="280" height="80" rx="8" fill="#fff3bf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="1246" text-anchor="middle" class="lblBold">NotificationService</text>
+  <text x="450" y="1268" text-anchor="middle" class="lbl" font-family="monospace" font-size="12">(EmailSender es)</text>
+  <text x="450" y="1290" text-anchor="middle" class="lbl" fill="#b91c1c">Spring: WHICH ONE?</text>
+
+  <text x="60" y="1340" class="lblBold" fill="#4a9eed">Solution 1: @Primary</text>
+  <text x="60" y="1362" class="lbl">Mark one as default → Spring picks it when no @Qualifier used</text>
+
+  <text x="480" y="1340" class="lblBold" fill="#22c55e">Solution 2: @Qualifier("sesEmailSender")</text>
+  <text x="480" y="1362" class="lbl">Explicit pick at injection point → overrides @Primary</text>
+
+  <!-- ===== SECTION 5: Bean Scopes ===== -->
+  <text x="60" y="1420" class="section">5. Bean Scopes</text>
+
+  <rect x="40" y="1450" width="200" height="130" rx="8" fill="#b2f2bb" stroke="#22c55e" stroke-width="2"/>
+  <text x="140" y="1478" text-anchor="middle" class="lblBold">singleton</text>
+  <text x="140" y="1498" text-anchor="middle" class="lbl" fill="#15803d">(default)</text>
+  <text x="140" y="1525" text-anchor="middle" class="lbl">ONE for whole app</text>
+  <text x="140" y="1547" text-anchor="middle" class="lbl">99% of cases</text>
+  <text x="140" y="1570" text-anchor="middle" class="lbl" font-size="12">stateless services</text>
+
+  <rect x="250" y="1450" width="200" height="130" rx="8" fill="#d0bfff" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="350" y="1478" text-anchor="middle" class="lblBold">prototype</text>
+  <text x="350" y="1498" text-anchor="middle" class="lbl">each injection</text>
+  <text x="350" y="1525" text-anchor="middle" class="lbl">NEW instance</text>
+  <text x="350" y="1547" text-anchor="middle" class="lbl">every time</text>
+  <text x="350" y="1570" text-anchor="middle" class="lbl" font-size="12">stateful objects</text>
+
+  <rect x="460" y="1450" width="200" height="130" rx="8" fill="#a5d8ff" stroke="#4a9eed" stroke-width="2"/>
+  <text x="560" y="1478" text-anchor="middle" class="lblBold">request</text>
+  <text x="560" y="1498" text-anchor="middle" class="lbl">web only</text>
+  <text x="560" y="1525" text-anchor="middle" class="lbl">ONE per</text>
+  <text x="560" y="1547" text-anchor="middle" class="lbl">HTTP request</text>
+  <text x="560" y="1570" text-anchor="middle" class="lbl" font-size="12">per-request state</text>
+
+  <rect x="670" y="1450" width="200" height="130" rx="8" fill="#fff3bf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="770" y="1478" text-anchor="middle" class="lblBold">session</text>
+  <text x="770" y="1498" text-anchor="middle" class="lbl">web only</text>
+  <text x="770" y="1525" text-anchor="middle" class="lbl">ONE per</text>
+  <text x="770" y="1547" text-anchor="middle" class="lbl">user session</text>
+  <text x="770" y="1570" text-anchor="middle" class="lbl" font-size="12">user-specific</text>
+
+  <!-- ===== SECTION 6: Circular Dependency ===== -->
+  <text x="60" y="1660" class="section">6. Circular Dependency</text>
+
+  <rect x="150" y="1700" width="180" height="100" rx="8" fill="#ffc9c9" stroke="#ef4444" stroke-width="2"/>
+  <text x="240" y="1740" text-anchor="middle" class="lblBold">ServiceA</text>
+  <text x="240" y="1765" text-anchor="middle" class="lbl">constructor needs B</text>
+
+  <rect x="570" y="1700" width="180" height="100" rx="8" fill="#ffc9c9" stroke="#ef4444" stroke-width="2"/>
+  <text x="660" y="1740" text-anchor="middle" class="lblBold">ServiceB</text>
+  <text x="660" y="1765" text-anchor="middle" class="lbl">constructor needs A</text>
+
+  <line x1="330" y1="1730" x2="570" y2="1730" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="450" y="1720" text-anchor="middle" class="lbl" fill="#b91c1c">needs B</text>
+
+  <line x1="570" y1="1770" x2="330" y2="1770" stroke="#ef4444" stroke-width="2" marker-end="url(#arrowRed)"/>
+  <text x="450" y="1795" text-anchor="middle" class="lbl" fill="#b91c1c">needs A</text>
+
+  <rect x="200" y="1830" width="500" height="55" rx="8" fill="#fff3bf" stroke="#f59e0b" stroke-width="2"/>
+  <text x="450" y="1855" text-anchor="middle" class="lblBold">BeanCurrentlyInCreationException</text>
+  <text x="450" y="1877" text-anchor="middle" class="lbl">at startup (constructor injection)</text>
+
+  <text x="60" y="1930" class="lblBold" fill="#b91c1c">Field injection hides it!</text>
+  <text x="60" y="1955" class="lbl">Spring uses half-initialized beans → app starts → runtime NPE</text>
+
+  <text x="60" y="1990" class="lblBold" fill="#15803d">The real fix: redesign</text>
+  <text x="60" y="2015" class="lbl">* Merge the two classes if they're too coupled</text>
+  <text x="60" y="2038" class="lbl">* Extract shared logic to a third class</text>
+  <text x="60" y="2061" class="lbl">* Use ApplicationEventPublisher for loose notifications</text>
+
+</svg>
