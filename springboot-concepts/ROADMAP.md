@@ -56,23 +56,25 @@ Concepts marked with ⭐ are frequently asked in interviews.
 ## Phase 2: Spring Core
 
 ### Dependency Injection & IoC
-- [ ] ⭐ What is IoC (Inversion of Control) — why it exists
-- [ ] ⭐ DI types — constructor vs setter vs field injection (and which to prefer)
-- [ ] ⭐ @Autowired — how Spring resolves beans
-- [ ] @Qualifier, @Primary — resolving ambiguity
+- [x] ⭐ What is IoC (Inversion of Control) — why it exists
+- [x] ⭐ DI types — constructor vs setter vs field injection (and which to prefer)
+- [x] ⭐ @Autowired — how Spring resolves beans
+- [x] @Qualifier, @Primary — resolving ambiguity
+- [x] Circular dependencies
 
 ### Beans & Lifecycle
-- [ ] ⭐ @Component vs @Service vs @Repository vs @Controller — differences
-- [ ] ⭐ Bean scopes — singleton, prototype, request, session
-- [ ] Bean lifecycle — creation → initialization → destruction
-- [ ] @PostConstruct, @PreDestroy
-- [ ] @Configuration and @Bean — manual bean definition
+- [x] ⭐ Bean scopes — singleton, prototype, request, session
+- [x] @Configuration and @Bean — manual bean definition
+- [x] @ConditionalOnMissingBean — how Spring Boot auto-config works
+- [x] ⭐ @Component vs @Service vs @Repository vs @Controller — subtle differences
+- [x] Bean lifecycle — creation → initialization → destruction
+- [x] @PostConstruct, @PreDestroy
 
 ### Configuration
-- [ ] ⭐ application.properties vs application.yaml
-- [ ] @Value — injecting properties
-- [ ] @ConfigurationProperties — type-safe config binding
-- [ ] Profiles (@Profile, spring.profiles.active) — env-specific config
+- [x] ⭐ application.properties vs application.yaml
+- [x] @Value — injecting properties
+- [x] @ConfigurationProperties — type-safe config binding
+- [x] Profiles (@Profile, spring.profiles.active) — env-specific config
 
 ### AOP (Aspect-Oriented Programming)
 - [ ] ⭐ What AOP is — cross-cutting concerns
