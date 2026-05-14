@@ -124,10 +124,10 @@ Concepts marked with ⭐ are frequently asked in interviews.
 - [ ] Spring Data JPA — how method names become queries
 
 ### Relationships
-- [ ] ⭐ @OneToMany, @ManyToOne, @ManyToMany, @OneToOne
-- [ ] ⭐ Lazy vs Eager loading — what, why, and the default for each
-- [ ] Cascade types — PERSIST, MERGE, REMOVE, ALL
-- [ ] orphanRemoval
+- [x] ⭐ @OneToMany, @ManyToOne, @ManyToMany, @OneToOne
+- [x] ⭐ Lazy vs Eager loading — what, why, and the default for each
+- [x] Cascade types — PERSIST, MERGE, REMOVE, ALL
+- [x] orphanRemoval
 
 ### Querying
 - [ ] ⭐ Derived queries (findByNameAndAge)
@@ -142,9 +142,9 @@ Concepts marked with ⭐ are frequently asked in interviews.
 - [ ] Optimistic vs Pessimistic locking
 
 ### Performance
-- [ ] ⭐ N+1 query problem — how to detect and fix
-- [ ] JOIN FETCH
-- [ ] @BatchSize
+- [x] ⭐ N+1 query problem — how to detect and fix
+- [x] JOIN FETCH
+- [x] @BatchSize
 - [ ] Second-level cache (Hibernate)
 
 ---
